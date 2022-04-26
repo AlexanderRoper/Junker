@@ -6,12 +6,24 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct JunkerApp: App {
+    @AppStorage("appPart") var appPart = 0
+    
+    init(){
+        FirebaseApp.configure()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if appPart == 0{
+                LogInView()
+            }
+            if appPart == 1{
+                DashboardView()
+            }
         }
     }
 }
